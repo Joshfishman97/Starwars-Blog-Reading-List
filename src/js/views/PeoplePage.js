@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 export function PeoplePage() {
 	const [people, setPeople] = useState([]);
 
-	useEffect(() => {}, []);
-	fetch("https://www.swapi.tech/api/people")
-		.then(res => res.json())
-		.then(data => setPeople(data.results))
-		.catch(err => console.log(err));
+	useEffect(() => {
+		fetch("https://www.swapi.tech/api/people")
+			.then(res => res.json())
+			.then(data => setPeople(data.results))
+			.catch(err => console.log(err));
+	}, []);
+
 	return (
 		<div className="row">
 			{people.map((item, index) => {
