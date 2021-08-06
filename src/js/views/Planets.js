@@ -19,7 +19,7 @@ export function Planets() {
 						<div className="card-body">
 							<h5 className="card-title">{item.name}</h5>
 							<p className="card-text" />
-							<a href="#" className="btn btn-primary">
+							<a href={"/planets/" + item.uid} className="btn btn-primary">
 								Go somewhere
 							</a>
 						</div>
