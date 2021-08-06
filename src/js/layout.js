@@ -24,24 +24,18 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
+					<Navbar />
 					<Switch>
 						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/people">
 							<PeoplePage />
+							<Vehicles />
+							<Planets />
 						</Route>
 						<Route exact path="/people/:id">
 							<PeoplePageIndividual />
 						</Route>
-						<Route exact path="/vehicles">
-							<Vehicles />
-						</Route>
 						<Route exact path="/vehicles/:id">
 							<VehiclesIndividual />
-						</Route>
-						<Route exact path="/planets">
-							<Planets />
 						</Route>
 						<Route exact path="/planets/:id">
 							<PlanetsIndividual />

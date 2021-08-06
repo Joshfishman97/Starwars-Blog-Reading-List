@@ -11,22 +11,26 @@ export function Planets() {
 	}, []);
 
 	return (
-		<div className="row">
-			{planets.map((item, index) => {
-				return (
-					<div key={index} className="card col-3" style={{ width: "16rem" }}>
-						<img className="card-img-top" src=".../100px180/" alt="Card image cap" />
-						<div className="card-body">
-							<h5 className="card-title">{item.name}</h5>
-							<p className="card-text" />
-							<a href={"/planets/" + item.uid} className="btn btn-primary">
-								Go somewhere
-							</a>
+		<div className="container horizontal-row">
+			<div>
+				<h1>Planets Page</h1>
+			</div>
+			<div className="row">
+				{planets.map((item, index) => {
+					return (
+						<div key={index} lassName="card col-4 " style={{ width: "16rem" }}>
+							<img className="card-img-top" src=".../100px180/" alt="Card image cap" />
+							<div className="card-body">
+								<h5 className="card-title">{item.name}</h5>
+								<p className="card-text" />
+								<a href={"/planets/" + item.uid} className="btn btn-primary">
+									Go somewhere
+								</a>
+							</div>
 						</div>
-					</div>
-				);
-			})}
-			<h1>Planets Page</h1>
+					);
+				})}
+			</div>
 		</div>
 	);
 }

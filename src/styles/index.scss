@@ -1,3 +1,18 @@
-/* 
-    General Styles
-*/
+.horizontal-row{
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.horizontal-row{
+    .row{ flex-wrap: nowrap;
+        .col-4{
+           display: inline-block; 
+        }
+    }
+}
+h1{
+   text-align: left;
+   position: fixed;
+   color: red;
+}
