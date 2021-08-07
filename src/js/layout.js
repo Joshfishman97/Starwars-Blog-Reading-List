@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
@@ -10,6 +10,7 @@ import { VehiclesIndividual } from "./views/VehiclesIndividual";
 import { Planets } from "./views/Planets";
 import { PlanetsIndividual } from "./views/PlanetsIndividual";
 import injectContext from "./store/appContext";
+import { FavoriteContext } from "./views/FavoriteList";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -19,33 +20,35 @@ const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
-
+	const [favoriteArray, setFavoriteArray] = useState([]);
 	return (
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Switch>
-						<Route exact path="/">
-							<PeoplePage />
-							<Vehicles />
-							<Planets />
-						</Route>
-						<Route exact path="/people/:id">
-							<PeoplePageIndividual />
-						</Route>
-						<Route exact path="/vehicles/:id">
-							<VehiclesIndividual />
-						</Route>
-						<Route exact path="/planets/:id">
-							<PlanetsIndividual />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
-					<Footer />
-				</ScrollToTop>
+				<FavoriteContext.Provider value={{ favoriteArray, setFavoriteArray }}>
+					<ScrollToTop>
+						<Navbar />
+						<Switch>
+							<Route exact path="/">
+								<PeoplePage />
+								<Vehicles />
+								<Planets />
+							</Route>
+							<Route exact path="/people/:id">
+								<PeoplePageIndividual />
+							</Route>
+							<Route exact path="/vehicles/:id">
+								<VehiclesIndividual />
+							</Route>
+							<Route exact path="/planets/:id">
+								<PlanetsIndividual />
+							</Route>
+							<Route>
+								<h1>Not found!</h1>
+							</Route>
+						</Switch>
+						<Footer />
+					</ScrollToTop>
+				</FavoriteContext.Provider>
 			</BrowserRouter>
 		</div>
 	);

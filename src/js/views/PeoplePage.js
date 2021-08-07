@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useContext } from "react";
+import { FavoriteContext } from "./FavoriteList";
 export function PeoplePage() {
 	const [people, setPeople] = useState([]);
-
+	const favorites = useContext(FavoriteContext);
 	useEffect(() => {
 		fetch("https://www.swapi.tech/api/people")
 			.then(res => res.json())
@@ -11,25 +11,44 @@ export function PeoplePage() {
 	}, []);
 
 	return (
-		<div className="container horizontal-row">
-			<div>
-				<h1 className="">People Page</h1>
-			</div>
-			<div className="row ">
-				{people.map((item, index) => {
-					return (
-						<div key={index} className="card col-4">
-							<img className="card-img-top" src=".../100px180/" alt="Card image cap" />
-							<div className="card-body">
-								<h5 className="card-title">{item.name}</h5>
-								<p className="card-text" />
-								<a href={"/people/" + item.uid} className="btn btn-primary">
-									Go somewhere
-								</a>
+		<div>
+			<h1 className="col-12">People Page</h1>
+			<div className="container-flex horizontal-row ">
+				<div className="row ">
+					{people.map((item, index) => {
+						return (
+							<div key={index} className="card col-4">
+								<img className="card-img-top" src=".../100px180/" alt="Card image cap" />
+								<div className="card-body">
+									<h5 className="card-title">{item.name}</h5>
+									<p className="card-text" />
+									<a href={"/people/" + item.uid} className="btn btn-primary">
+										Go somewhere
+									</a>
+									{favorites.favoriteArray.includes(item.name) ? (
+										<button
+											className="btn btn-outline-primary"
+											onClick={() => {
+												const newArray = favorites.favoriteArray;
+
+												favorites.setFavoriteArray(newArray.filter(fav => fav !== item.name));
+											}}>
+											Delete Favorite
+										</button>
+									) : (
+										<button
+											className="btn btn-primary"
+											onClick={() => {
+												favorites.setFavoriteArray([...favorites.favoriteArray, item.name]);
+											}}>
+											Favorite
+										</button>
+									)}
+								</div>
 							</div>
-						</div>
-					);
-				})}
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);
