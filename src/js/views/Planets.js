@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useContext } from "react";
+import { FavoriteContext } from "./FavoriteList";
 export function Planets() {
+	const favorites = useContext(FavoriteContext);
 	const [planets, setPlanets] = useState([]);
 
 	useEffect(() => {
@@ -25,6 +26,25 @@ export function Planets() {
 									<a href={"/planets/" + item.uid} className="btn btn-primary">
 										Go somewhere
 									</a>
+									{favorites.favoriteArray.includes(item.name) ? (
+										<button
+											className="btn btn-outline-primary"
+											onClick={() => {
+												const newArray = favorites.favoriteArray;
+
+												favorites.setFavoriteArray(newArray.filter(fav => fav !== item.name));
+											}}>
+											Delete Favorite
+										</button>
+									) : (
+										<button
+											className="btn btn-primary"
+											onClick={() => {
+												favorites.setFavoriteArray([...favorites.favoriteArray, item.name]);
+											}}>
+											Favorite
+										</button>
+									)}
 								</div>
 							</div>
 						);
