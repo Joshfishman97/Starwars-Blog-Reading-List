@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FavoriteContext } from "./FavoriteList";
+import { Context } from "../store/appContext";
 export function Planets() {
+	const { actions, store } = useContext(Context);
 	const favorites = useContext(FavoriteContext);
 	const [planets, setPlanets] = useState([]);
 
@@ -19,13 +21,20 @@ export function Planets() {
 					{planets.map((item, index) => {
 						return (
 							<div key={index} className="card col-4 " style={{ width: "16rem" }}>
-								<img className="card-img-top" src=".../100px180/" alt="Card image cap" />
+								<img
+									className="card-img-top"
+									src="http://via.placeholder.com/640x360"
+									alt="Card image cap"
+								/>
 								<div className="card-body">
 									<h5 className="card-title">{item.name}</h5>
 									<p className="card-text" />
 									<a href={"/planets/" + item.uid} className="btn btn-primary">
 										Go somewhere
 									</a>
+									<button className="btn" onClick={() => actions.addFavorite(item)}>
+										add me
+									</button>
 									{favorites.favoriteArray.includes(item.name) ? (
 										<button
 											className="btn btn-outline-primary"

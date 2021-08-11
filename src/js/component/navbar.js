@@ -26,7 +26,12 @@ export const Navbar = () => {
 
 					<ul className="dropdown-menu show" aria-labelledby="dropdownMenuLink">
 						{store.favorites.map((f, i) => {
-							return <li key={i}>{f.name}</li>;
+							return (
+								<li key={i}>
+									{f.name}{" "}
+									<i className="fas fa-trash-alt" onClick={() => actions.deleteFavorite(f)} />{" "}
+								</li>
+							);
 						})}
 					</ul>
 				</div>

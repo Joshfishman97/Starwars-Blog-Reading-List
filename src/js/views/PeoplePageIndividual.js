@@ -15,7 +15,13 @@ export function PeoplePageIndividual() {
 	);
 	return (
 		<div>
-			<h1>{details !== null ? details.properties.name : null}</h1>
+			<h1 className="text-center">{details !== null ? details.properties.name : null}</h1>
+			<h1>{details !== null ? details.properties.height : null}</h1>
+			<h1>{details !== null ? details.properties.mass : null}</h1>
+			<h1>{details !== null ? details.properties.hair_color : null}</h1>
+			<h1>{details !== null ? details.properties.eye_color : null}</h1>
+			<h1>{details !== null ? details.properties.gender : null}</h1>
+			<h1>{details !== null ? details.properties.birthyear : null}</h1>
 		</div>
 	);
 }

@@ -20,7 +20,11 @@ export function PeoplePage() {
 					{people.map((item, index) => {
 						return (
 							<div key={index} className="card col-4">
-								<img className="card-img-top" src=".../100px180/" alt="Card image cap" />
+								<img
+									className="card-img-top"
+									src="http://via.placeholder.com/640x360"
+									alt="Card image cap"
+								/>
 								<div className="card-body">
 									<h5 className="card-title">{item.name}</h5>
 									<p className="card-text" />

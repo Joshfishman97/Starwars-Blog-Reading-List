@@ -1,3 +1,5 @@
+import { element } from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -23,6 +25,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ favorites });
+			},
+			deleteFavorite: item => {
+				const favorites = getStore().favorites;
+				const arrayOfFavorites = favorites.filter(element => element != item);
+				setStore({ favorites: arrayOfFavorites });
 			}
 		}
 	};
