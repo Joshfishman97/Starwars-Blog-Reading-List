@@ -27,11 +27,13 @@ export function PeoplePage() {
 									<a href={"/people/" + item.uid} className="btn btn-primary">
 										Go somewhere
 									</a>
+									<button className="btn" onClick={() => actions.addFavorite(item)}>
+										add me
+									</button>
 									{favorites.favoriteArray.includes(item.name) ? (
 										<button
 											className="btn btn-outline-primary"
 											onClick={() => {
-												actions.addFavorite;
 												const newArray = favorites.favoriteArray;
 
 												favorites.setFavoriteArray(newArray.filter(fav => fav !== item.name));
