@@ -14,14 +14,32 @@ export function PeoplePageIndividual() {
 		[params.id]
 	);
 	return (
-		<div>
-			<h1 className="text-center">{details !== null ? details.properties.name : null}</h1>
-			<h1>{details !== null ? details.properties.height : null}</h1>
-			<h1>{details !== null ? details.properties.mass : null}</h1>
-			<h1>{details !== null ? details.properties.hair_color : null}</h1>
-			<h1>{details !== null ? details.properties.eye_color : null}</h1>
-			<h1>{details !== null ? details.properties.gender : null}</h1>
-			<h1>{details !== null ? details.properties.birthyear : null}</h1>
+		<div className="container-fluid">
+			<div className="row">
+				<div className="col-6 mx-auto border px-0">
+					<div className="row">
+						<div className="col-6">
+							<img className="w-100" src="http://via.placeholder.com/640x360" alt="Card image cap" />
+						</div>
+						<div className="col-6">
+							<h1 className="text-center">{details !== null ? details.properties.name : null}</h1>
+							<div className="row">
+								<div className="col-6">
+									<p>{details !== null ? details.properties.height : null}</p>
+									<p>{details !== null ? details.properties.mass : null}</p>
+									<p>{details !== null ? details.properties.hair_color : null}</p>
+								</div>
+
+								<div className="col-6">
+									<p>{details !== null ? details.properties.eye_color : null}</p>
+									<p>{details !== null ? details.properties.gender : null}</p>
+									<p>{details !== null ? details.properties.birth_year : null}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }
