@@ -25,15 +25,15 @@ export function PeoplePageIndividual() {
 							<h1 className="text-center">{details !== null ? details.properties.name : null}</h1>
 							<div className="row">
 								<div className="col-6">
-									<p>{details !== null ? details.properties.height : null}</p>
-									<p>{details !== null ? details.properties.mass : null}</p>
-									<p>{details !== null ? details.properties.hair_color : null}</p>
+									<p>Height: {details !== null ? details.properties.height : null} CM</p>
+									<p>Mass: {details !== null ? details.properties.mass : null} KG</p>
+									<p>Hair Color :{details !== null ? details.properties.hair_color : null}</p>
 								</div>
 
 								<div className="col-6">
-									<p>{details !== null ? details.properties.eye_color : null}</p>
-									<p>{details !== null ? details.properties.gender : null}</p>
-									<p>{details !== null ? details.properties.birth_year : null}</p>
+									<p>Eye Color: {details !== null ? details.properties.eye_color : null}</p>
+									<p>Gender: {details !== null ? details.properties.gender : null}</p>
+									<p>Birth Year: {details !== null ? details.properties.birth_year : null}</p>
 								</div>
 							</div>
 						</div>
