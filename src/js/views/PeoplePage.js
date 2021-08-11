@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FavoriteContext } from "./FavoriteList";
+import { Context } from "../store/appContext";
 export function PeoplePage() {
+	const { actions, store } = useContext(Context);
 	const [people, setPeople] = useState([]);
 	const favorites = useContext(FavoriteContext);
 	useEffect(() => {
@@ -29,6 +31,7 @@ export function PeoplePage() {
 										<button
 											className="btn btn-outline-primary"
 											onClick={() => {
+												actions.addFavorite;
 												const newArray = favorites.favoriteArray;
 
 												favorites.setFavoriteArray(newArray.filter(fav => fav !== item.name));
